@@ -3,7 +3,11 @@ const y = document.getElementById("maps");
 
 function getLocation() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition, showError); //watchPosition untuk request terus menerus
+    navigator.geolocation.getCurrentPosition(showPosition, showError, {
+      maximumAge: 10000,
+      timeout: 5000,
+      enableHighAccuracy: true,
+    }); //watchPosition untuk request terus menerus
   } else {
     x.innerHTML = "Browser Tidak Support.";
   }
